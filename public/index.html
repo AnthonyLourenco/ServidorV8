@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cadastro">
+        <div class="containerCadastro">
+            <div class="tituloCadastro">
+                <span>Cadastro</span>
+            </div>
+            <div class="tituloInput">
+                Nome
+            </div>
+            <div class="inputCadastro">
+                <input placeholder="Insira seu nome" id="nome_input">
+            </div>
+            <div class="tituloInput">
+                Sobrenome
+            </div>
+            <div class="inputCadastro">
+                <input placeholder="Insira seu sobrenome" id="sobrenome_input">
+            </div>
+            <div class="tituloInput">
+                Email
+            </div>
+            <div class="inputCadastro">
+                <input placeholder="Insira seu email" id="email_input">
+            </div>
+            <div class="tituloInput">
+                CPF
+            </div>
+            <div class="inputCadastro">
+                <input placeholder="Insira seu CPF" id="cpf_input">
+            </div>
+            <div class="tituloInput">
+                Senha
+            </div>
+            <div class="inputCadastro">
+                <input placeholder="Insira sua senha" id="senha_input"> 
+            </div>
+            <br>
+            <div class="botao">
+                <button onclick="cadastrar()">
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="usuarios"></div>
+</body>
+</html>
+
+<script>
+function cadastrar() {
+    var nomeVar = nome_input.value;
+    var sobrenomeVar = sobrenome_input.value;
+    var emailVar = email_input.value;
+    var cpfVar = cpf_input.value;
+    var senhaVar = senha_input.value;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      sobrenomeVar == "" || 
+      emailVar == "" ||
+      cpfVar == "" ||
+      senhaVar == "" 
+    ) {
+      console.log =
+        "(Mensagem de erro para todos os campos em branco)";
+
+
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nomeVar,
+        sobrenomeSERVER: sobrenomeVar,
+        emailServer: emailVar,
+        cpfServer: cpfVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          console.log =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+        //   setTimeout(() => {
+        //     window.location = "login.html";
+        //   }, "2000");
+
+        //   limparFormulario();
+        //   finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+</script>
