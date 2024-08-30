@@ -1,0 +1,94 @@
+body {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Manrope';
+}
+
+.cadastro {
+    height: 550px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerCadastro {
+    height: 545px;
+    width: 550px;
+    background-color: #274C77;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
+
+.tituloCadastro {
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 550;
+    color: #FFF;
+}
+
+.inputCadastro {
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 350px;
+    height: 24px;
+    text-align: center;
+    font-family: 'Manrope';
+    border-radius: 15px;
+    border-color: #ffffff00;
+    background-color: #88b1df;
+    transition: all 0.4s;
+}
+
+input:hover {
+    width: 365px;
+    transition: all 0.4s;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+    font-family: 'Manrope';
+    background-color: #88b1df;
+    color: #000000;
+    border-color: #26436400;
+    transition: all 0.4s;
+}
+
+button:hover {
+    width: 110px;
+    cursor: pointer;
+    background-color: #7bb5fd;
+    transition: all 0.4s;
+}
+
+.tituloInput {
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: #FFF;
+}
+
+.usuarios {
+    height: 550px;
+    width: 800px;
+}
