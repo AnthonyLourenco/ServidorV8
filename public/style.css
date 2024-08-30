@@ -1,6 +1,8 @@
 body {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     font-family: 'Manrope';
 }
 
@@ -91,4 +93,54 @@ button:hover {
 .usuarios {
     height: 550px;
     width: 800px;
+}
+
+.containerUsuarios {
+    width: 590px;
+    height: 545px;
+    background-color: #274C77;
+    border-radius: 20px;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tituloUsuarios {
+    width: 590px;
+    height: 80px;
+    color: #FFF;
+    font-size: 30px;
+    font-weight: 550;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ftoUsuario {
+    width: 95px;
+    height: 95px;
+    background-image: url(do-utilizador.png);
+    background-size: cover;
+}
+
+.nomeUsuario {
+    width: 300px;
+    height: 80px;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.emailUsuario {
+    width: 300px;
+    height: 80px;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
 }
