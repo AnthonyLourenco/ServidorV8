@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="listar()">
     <div class="cadastro">
         <div class="containerCadastro">
             <div class="tituloCadastro">
@@ -56,13 +56,7 @@
           <div class="tituloUsuarios">
             <span>Usuários</span>
           </div>
-          <div class="ftoUsuario"></div>
-          <div class="nomeUsuario">
-            <span>Nome</span>
-          </div>
-          <div class="emailUsuario">
-            <span>Email</span>
-          </div>
+          <div class="gridUsuario" id="grid"></div>
         </div>
     </div>
 </body>
@@ -99,7 +93,7 @@ function cadastrar() {
       },
       body: JSON.stringify({
         nomeServer: nomeVar,
-        sobrenomeSERVER: sobrenomeVar,
+        sobrenomeServer: sobrenomeVar,
         emailServer: emailVar,
         cpfServer: cpfVar,
         senhaServer: senhaVar
@@ -107,7 +101,8 @@ function cadastrar() {
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
-
+        alert('usuario cadastrado com sucesso')
+        window.location.reload();
         if (resposta.ok) {
           console.log =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
@@ -118,6 +113,7 @@ function cadastrar() {
 
         //   limparFormulario();
         //   finalizarAguardar();
+
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -130,4 +126,40 @@ function cadastrar() {
     return false;
   }
 
+  function listar() {
+  fetch("/usuarios/listar", {
+    method: "GET",
+  })
+    .then(function (resposta) {
+      if (!resposta.ok) {
+        throw new Error(`Erro na rede: ${resposta.statusText}`);
+      }
+      return resposta.json();
+    })
+    .then(function (dados) {
+      sessionStorage.setItem("USUARIOS", JSON.stringify(dados));
+      console.log("Usuários armazenados com sucesso.");
+      plotarDados()
+    })
+    .catch(function (erro) {
+      console.error(`#ERRO: ${erro.message}`);
+    });
+}
+
+function plotarDados() {
+    let usuarios = sessionStorage.getItem('USUARIOS')
+    let grid = document.getElementById('grid')
+    usuarios = JSON.parse(usuarios)
+
+    usuarios.forEach(usuario => {
+        console.log(usuario) 
+        grid.innerHTML += `
+        <div class="novoUsario">
+              <div class="ftoUsuario"></div>
+            <p style="color: white; font-size:25px;">Nome: <i>${usuario.nome} ${usuario.sobrenome}</i></p>
+            <p style="color: white; font-size:25px;">Email: <i>${usuario.email}</i></p>
+          </div>`
+    });
+
+}
 </script>

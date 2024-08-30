@@ -1,5 +1,11 @@
 var usuarioModel = require("../models/usuarioModel");
 
+function listar(req, res) {
+    usuarioModel.listar().then((resultado) => {
+      res.status(200).json(resultado);
+    });
+  }
+
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -68,7 +74,7 @@ function cadastrar(req, res) {
     } else if ( cpf == undefined) {
         res.status(400).send("Sua empresa a vincular está undefined!");
     } else {
-
+        console.log(sobrenome)
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, sobrenome, email, cpf, senha,)
             .then(
@@ -90,5 +96,6 @@ function cadastrar(req, res) {
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    listar
 }

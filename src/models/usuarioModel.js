@@ -22,7 +22,14 @@ function cadastrar(nome, sobrenome, email, senha, cpf) {
     return database.executar(instrucaoSql);
 }
 
+function listar() {
+    var instrucaoSql = `SELECT nome, sobrenome, email from usuario;`;
+  
+    return database.executar(instrucaoSql);
+  }
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    listar
 };
